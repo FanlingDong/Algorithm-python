@@ -6,11 +6,11 @@ def topKFrequent(nums, k):
     # counts: 1     2     3      4      5    6
     # array: [3]  [2,2]  [1,1,1]
     freq = [[] for i in range(len(nums) + 1)]
-    dict = {}
+    count = {}
     for num in nums:
-        dict[num] = 1 + dict.get((num), 0)
+        count[num] = 1 + count.get(num, 0)
 
-    for n, c in dict.items():
+    for n, c in count.items():
         # count would be the index
         freq[c].append(n)
 
