@@ -14,31 +14,32 @@
 
 # - s1 and s2 consist of lowercase English letters.
 def main(s1: str, s2: str) -> bool:
-  if len(s1) > len(s2):
-    return False
-  dict_s1 = {}
-  for s in s1:
-    if s in dict_s1:
-      dict_s1[s] += 1
-    else:
-      dict_s1[s] = 1
-
-  # O(m*n)
-  dict_s2 = {}
-  for i in range(len(s2)):
-    if s2[i] in s1 and i + len(s1) <= len(s2):
-      # compare two strings
-      new_s2 = s2[i: i+ len(s1)]
-      dict_s2[s[i - len(s1)]] -=1
-      dict_s2[s[i]] += 1
-      for s in new_s2:
-        if s in dict_s2:
-          dict_s2[s] += 1
+    if len(s1) > len(s2):
+        return False
+    dict_s1 = {}
+    for s in s1:
+        if s in dict_s1:
+            dict_s1[s] += 1
         else:
-          dict_s2[s] = 1
-      if dict_s2 == dict_s1:
-        return True
-  return False
+            dict_s1[s] = 1
+
+    # O(m*n)
+    # dict_s2 = {}
+    for i in range(len(s2)):
+        if s2[i] in s1 and i + len(s1) <= len(s2):
+            # compare two strings
+            dict_s2 = {}
+            new_s2 = s2[i: i + len(s1)]
+            # dict_s2[s[i - len(s1)]] -= 1
+            dict_s2[s2[i]] += 1
+            for s in new_s2:
+                if s in dict_s2:
+                    dict_s2[s] += 1
+                else:
+                    dict_s2[s] = 1
+            if dict_s2 == dict_s1:
+                return True
+    return False
 
 
 print(main('ab', 'eidbaooo'))
