@@ -31,7 +31,7 @@ def main(s1: str, s2: str) -> bool:
             dict_s2 = {}
             new_s2 = s2[i: i + len(s1)]
             # dict_s2[s[i - len(s1)]] -= 1
-            dict_s2[s2[i]] += 1
+            # dict_s2[s2[i]] += 1
             for s in new_s2:
                 if s in dict_s2:
                     dict_s2[s] += 1
