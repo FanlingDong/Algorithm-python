@@ -32,4 +32,4 @@ def twoSum(nums, target: int):
     return []
 
 
-print(twoSum([2, 7, 11, 15], 9))
+print(twoSum([2, 3, 4], 6))
