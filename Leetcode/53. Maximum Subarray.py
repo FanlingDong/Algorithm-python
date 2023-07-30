@@ -20,11 +20,13 @@ Explanation: The subarray [5,4,-1,7,8] has the largest sum 23."""
 
 def maxSubArray(self, nums) -> int:
     # -2, 1, -3, 4, -1, 2, 1, -5, 4
-    maxSum = nums[0]
+    # -2, 1, -3, 4, -1, 2, 1, -5, 4
+    maxSub = nums[0]
     curSum = 0
     for n in nums:
         if curSum < 0:
             curSum = 0
         curSum += n
-        maxSum = max(curSum, maxSum)
-    return maxSum
+        maxSub = max(curSum, maxSub)
+        print(maxSub)
+    return maxSub
