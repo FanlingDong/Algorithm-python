@@ -12,7 +12,20 @@
 # Output:
 # 2
 def main(n: int, m: int) -> int:
-    pass
+    dp = [[0 for _ in range(n)] for _ in range(m)]
+    dp[0][0] = 1
+
+    for i in range(n):
+        for j in range(m):
+            if 0 <= i + 1 < n and 0 <= j + 2 < m:
+                dp[i + 1][j + 2] += dp[i][j]
+            if 0 <= i + 2 < n and 0 <= j + 1 < m:
+                dp[i + 2][j + 1] += dp[i][j]
+            if 0 <= i - 1 < n and 0 <= j + 2 < m:
+                dp[i - 1][j + 2] += dp[i][j]
+            if 0 <= i + 2 < n and 0 <= j - 1 < m:
+                dp[i + 2][j - 1] += dp[i][j]
+    return dp[n - 1][m - 1]
 
 
-main(4, 4)
+print(main(4, 4))
