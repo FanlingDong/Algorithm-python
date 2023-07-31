@@ -19,4 +19,10 @@ Explanation: There is no common prefix among the input strings.
 
 
 def longestCommonPrefix(strs) -> str:
-   pass
+    res = ""
+    for i in range(len(strs[0])):  # 遍历第一个字符串里的字符
+        for s in strs:  # 得到每一个字符串
+            if i == len(s) or strs[0][i] != s[i]:
+                return res
+        res += strs[0][i]
+    return res
