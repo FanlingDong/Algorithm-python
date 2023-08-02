@@ -39,7 +39,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 """
 
 
-def removeDuplicates(self, nums: List[int]) -> int:
+def removeDuplicates(nums) -> int:
     # 1 1 2 2 3
     j = 1
     for i in range(1, len(nums)):
