@@ -31,3 +31,22 @@ Note that because m = 0, there are no elements in nums1. The 0 is only there to 
 
 """
 
+
+def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    """
+    Do not return anything, modify nums1 in-place instead.
+    """
+
+    i = m - 1  # list1 结尾的index
+    j = n - 1  # list2 结尾的index
+    k = m + n - 1  # 结果结尾的index
+
+    while j >= 0:
+        if i >= 0 and nums1[i] > nums2[j]:
+            nums1[k] = nums1[i]
+            i -= 1
+        else:
+            nums1[k] = nums2[j]
+            j -= 1
+        k -= 1
+
