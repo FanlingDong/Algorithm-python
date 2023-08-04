@@ -24,6 +24,7 @@ Output: [1]
 
 """
 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -31,7 +32,7 @@ Output: [1]
 #         self.left = left
 #         self.right = right
 
-def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+def inorderTraversal(self, root):
     res = []
     st = []
     while root or st:
@@ -43,4 +44,3 @@ def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 
         root = root.right
     return res
-
