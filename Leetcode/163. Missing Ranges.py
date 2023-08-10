@@ -25,7 +25,6 @@ def findMissingRanges(nums, lower, upper):
         res.append(findRange(lower, nums[0] - 1))
 
     for prev, curr in zip(nums, nums[1:]):
-        print(prev, curr)
         if prev < curr - 1:
             res.append(findRange(prev + 1, curr - 1))
 
