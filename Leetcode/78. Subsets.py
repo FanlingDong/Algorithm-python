@@ -40,3 +40,24 @@ class Solution:
             path.append(nums[i])
             self.backtracking(nums, i + 1, path, res)
             path.pop()
+
+
+class Solution2:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        subset = []
+
+        def backtracking(i):
+            if i >= len(nums):
+                res.append(subset.copy())
+                return
+                # subset include current value
+            subset.append(nums[i])
+            backtracking(i + 1)
+
+            # subset not include current value
+            subset.pop()
+            backtracking(i + 1)
+
+        backtracking(0)
+        return res
