@@ -31,7 +31,7 @@ board[i][j] is 'X' or 'O'.
 
 
 class Solution:
-    def solve(self, board: List[List[str]]) -> None:
+    def solve(self, board) -> None:
         """
         Do not return anything, modify board in-place instead.
         """
@@ -64,4 +64,6 @@ class Solution:
                 elif board[r][c] == 'E':
                     board[r][c] = 'O'
 
-
+board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+s = Solution()
+s.solve(board)
