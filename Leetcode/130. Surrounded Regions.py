@@ -64,6 +64,46 @@ class Solution:
                 elif board[r][c] == 'E':
                     board[r][c] = 'O'
 
+
+class Solution2:
+    def solve(self, board) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        if not board:
+            return
+
+        rows, cols = len(board), len(board[0])
+
+        def dfs(r, c):
+            if r < 0 or r == rows or c < 0 or c == cols or board[r][c] != 'O':
+                return
+            # 只有和边缘相连的O再向内延伸，连接到其他的O，才不会被X单独包围
+            # 因此要从这些边缘O出发，并对它们做dfs
+            # E表示边缘或与边缘相连的O
+            board[r][c] = 'E'
+
+            dfs(r + 1, c)
+            dfs(r - 1, c)
+            dfs(r, c + 1)
+            dfs(r, c - 1)
+
+
+        for r in range(rows):
+            for c in range(cols):
+                # r in [0, rows - 1] 意思是 r 不是 0， 就是 rows - 1，也就是说在边缘上的O才会进入dfs
+                if (board[r][c] == "O" and
+                        (r in [0, rows - 1] or c in [0, cols - 1])):
+                    dfs(r, c)
+
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c] == 'O':
+                    board[r][c] = 'X'
+                elif board[r][c] == 'E':
+                    board[r][c] = 'O'
+
+
 board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
-s = Solution()
+s = Solution2()
 s.solve(board)
