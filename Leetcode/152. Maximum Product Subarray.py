@@ -37,7 +37,7 @@ class Solution:
                 continue
             tmp = curMax * n
             curMax = max(n * curMax, n * curMin, n)
-            curMin = min(n * curMax, n * curMin, n)
+            curMin = min(tmp, n * curMin, n)
 
             res = max(res, curMax)
 
