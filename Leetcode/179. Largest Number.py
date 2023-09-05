@@ -20,10 +20,11 @@ Constraints:
 1 <= nums.length <= 100
 0 <= nums[i] <= 109
 """
+from functools import cmp_to_key
 
 
 class Solution:
-    def largestNumber(self, nums: List[int]) -> str:
+    def largestNumber(self, nums) -> str:
         # greedy
 
         for i, n in enumerate(nums):
