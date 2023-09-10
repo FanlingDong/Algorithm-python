@@ -32,6 +32,6 @@ class Solution:
         # 一个非质数一定有一个因子小于或等于它的平方根。
         for i in range(2, int(n ** 0.5) + 1):
             if primes[i]:
-                # 将i和i倍的数字都标记为True
+                # False
                 primes[i * i: n: i] = [False] * len(primes[i * i: n: i])
         return sum(primes)
