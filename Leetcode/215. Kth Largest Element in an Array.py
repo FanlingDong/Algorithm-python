@@ -24,7 +24,8 @@ Constraints:
 """
 
 
-class Solution:
+
+class Solution1:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         nums.sort()
         nums = nums[::-1]
@@ -33,3 +34,8 @@ class Solution:
         for i in range(len(nums)):
             if i == k - 1:
                 return nums[i]
+
+class Solution2:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        return nums[len(nums) - k]
