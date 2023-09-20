@@ -28,3 +28,11 @@ class Solution:
 
         sum_int = num1 + num2
         return bin(sum_int)[2:]
+
+class Solution2:
+    def addBinary(self, a: str, b: str) -> str:
+        a_binary = int(a, 2)
+        b_binary = int(b, 2)
+        ans = a_binary + b_binary
+
+        return "{0:b}".format(ans)
