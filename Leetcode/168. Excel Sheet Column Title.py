@@ -41,22 +41,15 @@ class Solution:
         #  col       res   remainder
         # 25 / 26 = 0 ... 25
 
-        # res = ""
+        res = ""
 
-        # while columnNumber > 0:
-        #     remainder = (columnNumber - 1) % 26
-        #     print(remainder, columnNumber)
-        #     res = chr(65 + remainder) + res
-        #     columnNumer = (columnNumber - 1) // 26
-        # return res
-
-        result = ""
-        num = columnNumber
-        while num > 0:
-            remainder = (num - 1) % 26
-            result = chr(65 + remainder) + result  # 65是字符'A'的ASCII码
-            num = (num - 1) // 26
-        return result
+        while columnNumber > 0:
+            remainder = (columnNumber - 1) % 26
+            res = chr(65 + remainder) + res
+            columnNumber = (columnNumber - 1) // 26
+        return res
 
 
+s = Solution()
+print(s.convertToTitle(1))
 
