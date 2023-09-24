@@ -51,5 +51,5 @@ class Solution:
 
 
 s = Solution()
-print(s.convertToTitle(1))
+print(s.convertToTitle(2))
 
