@@ -35,3 +35,15 @@ class Solution:
       while n % 3 == 0: n /= 3
       while n % 2 == 0: n /= 2
       return n == 1
+
+
+class Solution2:
+  def isUgly(self, n: int) -> bool:
+    if n == 0:
+      return False
+    for i in [2, 3, 5]:
+      while n % i == 0:
+        n = n // i
+    return n == 1
+
+
