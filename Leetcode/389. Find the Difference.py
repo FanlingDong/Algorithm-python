@@ -29,7 +29,6 @@ s and t consist of lowercase English letters.
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
         dict = {}
-
         for i in range(len(s)):
             dict[s[i]] = dict.get(s[i], 0) + 1
             dict[t[i]] = dict.get(t[i], 0) - 1
@@ -38,7 +37,12 @@ class Solution:
         for k, v in dict.items():
             if v == -1:
                 return k
-
-
 s = Solution()
 print(s.findTheDifference("abcd", "abcde"))
+
+
+class Solution2:
+    def findTheDifference(self, s: str, t: str) -> str:
+      for i in t:
+        if s.count(i) != t.count(i):
+          return i
