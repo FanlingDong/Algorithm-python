@@ -26,3 +26,17 @@ Constraints:
 Note: This question is the same as 1009: https://leetcode.com/problems/complement-of-base-10-integer/
 """
 
+class Solution:
+    def findComplement(self, num: int) -> int:
+        complement_bin = str(bin(num)[2:])
+        res = ''
+        print(complement_bin)
+        for i in complement_bin:
+            if i == '0':
+                res += '1'
+            else:
+                res += '0'
+        print(res)
+
+s = Solution()
+print(s.findComplement(5))
