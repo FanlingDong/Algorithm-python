@@ -23,3 +23,13 @@ nums[i] is either 0 or 1.
 
 class Solution:
     def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        res = 0
+        cur_max = 0
+        for i in nums:
+            if i == 1:
+                cur_max += 1
+            if i == 0:
+                cur_max = 0
+            if cur_max > res:
+                res = cur_max
+        return res
