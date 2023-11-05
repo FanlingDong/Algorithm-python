@@ -25,3 +25,19 @@ Constraints:
 0 <= x, y <= 231 - 1
 """
 
+
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        xor = x ^ y
+
+        distance = 0
+
+        while xor:
+            xor &= xor - 1
+            a = bin(xor)
+            distance += 1
+        return distance
+
+
+s = Solution()
+print(s.hammingDistance(14, 9))
