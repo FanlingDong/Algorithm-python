@@ -29,9 +29,10 @@ Constraints:
 1 <= area <= 107
 """
 
+
 class Solution:
     def constructRectangle(self, area: int) -> List[int]:
         m = int(area ** 0.5)
         for l in range(m, 0, -1):
             if area % l == 0:
-                return(area // l, l)
+                return area // l, l
