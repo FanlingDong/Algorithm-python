@@ -20,3 +20,15 @@ Output: "2-5G-3J"
 Explanation: The string s has been split into three parts, each part has 2 characters except the first part as it could be shorter as mentioned above.
 
 """
+
+class Solution:
+    def licenseKeyFormatting(self, s: str, k: int) -> str:
+        S = s.replace('-', '')
+        head = len(S) % k
+        grouping = []
+
+        if head:
+            grouping.append(S[:head])
+        for i in range(head, len(S), k):
+            grouping.append(S[i:i + k])
+        return '-'.join(grouping).upper()
