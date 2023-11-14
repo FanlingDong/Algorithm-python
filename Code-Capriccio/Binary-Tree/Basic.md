@@ -36,15 +36,33 @@ a b c d e f g
 
 ### DFS - recursion
 
-前 中 后序遍历都是dfs 
+#### 实现方式：
 
-实现方式：stack，recursion，Iterative（非recursion）
+stack，recursion，Iterative（非recursion）
+
+#### 前中后序遍历：都是dfs
+
+（中的位置不同）
+
+前序遍历：中左右
+
+中序遍历：左中右
+
+后序遍历：左右中
 
 ### BFS
 
 Sequence traversal：一层一层去遍历
 
+## Binary Tree Definition
 
+```python
+Class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+```
 
 
 
