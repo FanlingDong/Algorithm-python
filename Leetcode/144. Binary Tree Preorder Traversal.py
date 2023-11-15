@@ -1,18 +1,13 @@
 """
-
-Given the root of a binary tree, return the inorder traversal of its nodes' values.
+Given the root of a binary tree, return the preorder traversal of its nodes' values.
 
 
 
 Example 1:
-      1
-       \
-        2
-       /
-      3
+
 
 Input: root = [1,null,2,3]
-Output: [1,3,2]
+Output: [1,2,3]
 Example 2:
 
 Input: root = []
@@ -22,6 +17,14 @@ Example 3:
 Input: root = [1]
 Output: [1]
 
+
+Constraints:
+
+The number of nodes in the tree is in the range [0, 100].
+-100 <= Node.val <= 100
+
+
+Follow up: Recursive solution is trivial, could you do it iteratively?
 """
 
 
@@ -31,29 +34,14 @@ Output: [1]
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
-def inorderTraversal(self, root):
-    res = []
-    st = []
-    while root or st:
-        while root:
-            st.append(root)
-            root = root.left
-        root = st.pop()
-        res.append(root.val)
-
-        root = root.right
-    return res
-
-
-class Solution2:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         def traversal(cur, stack):
             if cur == None:
                 return
 
-            traversal(cur.left, stack)
             stack.append(cur.val)
+            traversal(cur.left, stack)
             traversal(cur.right, stack)
 
         res = []
