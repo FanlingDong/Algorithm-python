@@ -59,3 +59,21 @@ class Solution2:
         res = []
         traversal(root, res)
         return res
+
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        stack = []
+        res = []
+        cur = root
+
+        while stack or cur:
+            if cur != None:
+                stack.append(cur)
+                cur = cur.left
+            else:
+                cur = stack.pop()
+                res.append(cur.val)
+                cur = cur.right
+        return res
