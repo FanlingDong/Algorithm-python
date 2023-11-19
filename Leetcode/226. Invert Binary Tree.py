@@ -32,6 +32,8 @@ The number of nodes in the tree is in the range [0, 100].
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# 后序遍历
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
@@ -42,3 +44,6 @@ class Solution:
         # swap the nodes
         root.left, root.right = root.right, root.left
         return root
+
+# 前序遍历
+# 中序遍历（不推荐）
