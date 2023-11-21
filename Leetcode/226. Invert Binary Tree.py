@@ -45,5 +45,30 @@ class Solution:
         root.left, root.right = root.right, root.left
         return root
 
+
 # 前序遍历
+class Solution2:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return root
+
+        self.invertTree(root.left)
+        # swap the nodes
+        self.invertTree(root.right)
+        root.left, root.right = root.right, root.left
+
+        return root
+
+
 # 中序遍历（不推荐）
+class Solution3:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return root
+
+        self.invertTree(root.left)
+        # swap the nodes
+        root.left, root.right = root.right, root.left
+        self.invertTree(root.left)
+
+        return root
