@@ -37,3 +37,24 @@ def isSymmetric(self, root) -> bool:
                 dfs(left.right, right.left))
 
     return dfs(root.left, root.right)
+
+
+class Solution2:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        # dfs
+        def compare(left, right):
+            if left is None and right:
+                return False
+            elif left and right is None:
+                return False
+            elif left is None and right is None:
+                return True
+            elif left.val != right.val:
+                return False
+
+            outside = compare(left.left, right.right)
+            inside = compare(left.right, right.left)
+            res = outside and inside
+            return res
+
+        return compare(root.left, root.right)
