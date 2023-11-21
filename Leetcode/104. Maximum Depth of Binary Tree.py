@@ -71,3 +71,16 @@ class Solution3:
                 if node.right:
                     stack.append([node.right, depth + 1])
         return res
+
+# 后序遍历：左右中，用求树的height来求depth
+class Solution4:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+
+        left_height = self.maxDepth(root.left)
+        right_height = self.maxDepth(root.right)
+        res = 1 + max(left_height, right_height)
+        return res
+
+
