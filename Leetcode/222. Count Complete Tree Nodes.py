@@ -60,9 +60,6 @@ class Solution:
 #         self.val = val
 #         self.left = left
 #         self.right = right
-from collections import deque
-
-
 class Solution2:
     def countNodes(self, root: Optional[TreeNode]) -> int:
         if not root: return 0
@@ -90,3 +87,35 @@ class Solution2:
         return height
 
 
+class Solution3:
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        if not root: return 0
+
+        left_depth = 0
+        right_depth = 0
+        left = root.left
+        right = root.right
+
+        while left:
+            left = left.left
+            left_depth += 1
+        while right:
+            right = right.right
+            right_depth += 1
+        if left_depth == right_depth:
+            return (2 << left_depth) - 1
+
+        leftNum = self.countNodes(root.left)
+        rightNum = self.countNodes(root.right)
+        res = leftNum + rightNum + 1
+        return res
+
+
+def BinaryTreeNodeNumber(root):
+    if root is None:
+        return 0
+
+    left = BinaryTreeNodeNumber(root.left)
+    right = BinaryTreeNodeNumber(root.right)
+    res = 1 + left + right
+    return res
