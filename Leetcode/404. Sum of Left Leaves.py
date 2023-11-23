@@ -39,3 +39,20 @@ class Solution:
             return root.left.val + self.sumOfLeftLeaves(root.right)
         else:
             return self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
+
+
+# 后序遍历
+class Solution2:
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
+        if root.left is None and root.right is None:
+            return 0
+
+        leftNum = self.sumOfLeftLeaves(root.left)
+        if root.left and root.left.left is None and root.left.right is None:
+            leftNum = root.left.val
+        rightNum = self.sumOfLeftLeaves(root.right)
+        total = leftNum + rightNum
+        return total
