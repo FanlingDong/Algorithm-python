@@ -29,21 +29,20 @@ The number of nodes in the tree is in the range [1, 104].
 #         self.right = right
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
-        maxDepth = 0
-        res = -(2 ** 32)
-        def getDepth(node, depth):
-            if node.left is None and node.right is None:
-                if depth > maxDepth:
-                    maxDepth = depth
-                    res = node.val
-            if node.left:
-                depth += 1
-                getDepth(node.left, depth)
-                depth -= 1
-            if node.right:
-                depth += 1
-                getDepth(node.right, depth)
-                depth -= 1
-            return res
-        depth = 0
-        getDepth(root, depth)
+        self.maxDepth = float('-inf')
+        self.res = None
+        self.getDepth(root, 0)
+        return self.res
+    def getDepth(self, node, depth):
+        if node.left is None and node.right is None:
+            if depth > self.maxDepth:
+                self.maxDepth = depth
+                self.res = node.val
+        if node.left:
+            depth += 1
+            self.getDepth(node.left, depth)
+            depth -= 1
+        if node.right:
+            depth += 1
+            self.getDepth(node.right, depth)
+            depth -= 1
