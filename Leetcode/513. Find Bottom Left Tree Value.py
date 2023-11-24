@@ -21,6 +21,7 @@ The number of nodes in the tree is in the range [1, 104].
 -231 <= Node.val <= 231 - 1
 '''
 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -28,11 +29,16 @@ The number of nodes in the tree is in the range [1, 104].
 #         self.left = left
 #         self.right = right
 class Solution:
+    def __init__(self):
+        self.maxDepth = None
+        self.res = None
+
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
         self.maxDepth = float('-inf')
         self.res = None
         self.getDepth(root, 0)
         return self.res
+
     def getDepth(self, node, depth):
         if node.left is None and node.right is None:
             if depth > self.maxDepth:
