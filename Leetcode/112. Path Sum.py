@@ -48,3 +48,29 @@ class Solution:
         if root.left is None and root.right is None:
             return targetSum == root.val
         return self.hasPathSum(root.left, targetSum - root.val) or self.hasPathSum(root.right, targetSum - root.val)
+
+
+class Solution2:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        def findPath(node, res, path):
+            path.append(node.val)
+            if node.left is None and node.right is None:
+                res.append(sum(path))
+                return
+
+            if node.left:
+                findPath(node.left, res, path)
+                path.pop()
+            if node.right:
+                findPath(node.right, res, path)
+                path.pop()
+
+        if root is None:
+            return 0
+        result = []
+        cur_path = []
+        findPath(root, result, cur_path)
+        if targetSum in result:
+            return True
+        else:
+            return False
