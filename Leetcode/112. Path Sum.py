@@ -74,3 +74,29 @@ class Solution2:
             return True
         else:
             return False
+
+
+class Solution3:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        def traversal(node, count):
+            if node.left is None and node.right is None:
+                if count == 0:
+                    return True
+                else:
+                    return False
+
+            if node.left:
+                count -= node.left.val
+                if traversal(node.left, count):
+                    count += node.left.val
+                    return True
+            if node.right:
+                count -= node.left.val
+                if traversal(node.right, count):
+                    count += node.right.val
+                    return True
+            return False
+
+        if root is None:
+            return False
+        return traversal(root, targetSum)
