@@ -7,7 +7,7 @@ s.t. a+b+c+d = S.
 
 # Two ways, one is array, other is hashmap
 
-# Method 1: Array + Binary search
+# Method 1: 1 Array + Binary search
 
 def fourSumArray(A, S):
     sumPairs = []
