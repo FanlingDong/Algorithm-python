@@ -29,7 +29,39 @@ board[i][j] is a digit or '.'.
 
 
 class Solution:
-    def solveSudoku(self, board: List[List[str]]) -> None:
+    def solveSudoku(self, board) -> None:
         """
         Do not return anything, modify board in-place instead.
         """
+        self.backTracking(board)
+
+    def backTracking(self, board):
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if board[i][j] != '.':
+                    continue
+                for k in range(10):
+                    if self.isValid(i, j, k, board):
+                        board[i][j] = f'${k}'
+                        self.backTracking(board)
+                        board[i][j] = '.'
+                return False
+        return True
+
+    def isValid(self, row, col, number, board):
+        for i in range(9):
+            if board[row][i] == number:
+                return False
+        for j in range(9):
+            if board[j][col] == number:
+                return False
+
+
+board = [["5", "3", ".", ".", "7", ".", ".", ".", "."], ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+         [".", "9", "8", ".", ".", ".", ".", "6", "."], ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+         ["4", ".", ".", "8", ".", "3", ".", ".", "1"], ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+         [".", "6", ".", ".", ".", ".", "2", "8", "."], [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+         [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
+
+s = Solution()
+print(s.solveSudoku(board))
