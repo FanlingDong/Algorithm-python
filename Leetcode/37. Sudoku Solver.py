@@ -50,10 +50,10 @@ class Solution:
 
     def isValid(self, row, col, number, board):
         for i in range(9):
-            if board[row][i] == number:
+            if board[row][i] == str(number):
                 return False
         for j in range(9):
-            if board[j][col] == number:
+            if board[j][col] == str(number):
                 return False
         start_row = (row // 3) * 3
         start_col = (col // 3) * 3
