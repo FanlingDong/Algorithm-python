@@ -40,10 +40,10 @@ class Solution:
             for j in range(len(board[0])):
                 if board[i][j] != '.':
                     continue
-                for k in range(10):
+                for k in range(1, 10):
                     if self.isValid(i, j, k, board):
-                        board[i][j] = f'${k}'
-                        self.backTracking(board)
+                        board[i][j] = f'{k}'
+                        if self.backTracking(board): return True
                         board[i][j] = '.'
                 return False
         return True
@@ -55,13 +55,21 @@ class Solution:
         for j in range(9):
             if board[j][col] == number:
                 return False
+        start_row = (row // 3) * 3
+        start_col = (col // 3) * 3
+        for i in range(start_row, start_row + 3):
+            for j in range(start_col, start_col + 3):
+                if board[i][j] == str(number):
+                    return False
+        return True
 
 
 board_test = [["5", "3", ".", ".", "7", ".", ".", ".", "."], ["6", ".", ".", "1", "9", "5", ".", ".", "."],
-         [".", "9", "8", ".", ".", ".", ".", "6", "."], ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
-         ["4", ".", ".", "8", ".", "3", ".", ".", "1"], ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
-         [".", "6", ".", ".", ".", ".", "2", "8", "."], [".", ".", ".", "4", "1", "9", ".", ".", "5"],
-         [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
+              [".", "9", "8", ".", ".", ".", ".", "6", "."], ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+              ["4", ".", ".", "8", ".", "3", ".", ".", "1"], ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+              [".", "6", ".", ".", ".", ".", "2", "8", "."], [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+              [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
 
 s = Solution()
-print(s.solveSudoku(board_test))
+s.solveSudoku(board_test)
+print(board_test)
