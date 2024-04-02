@@ -30,9 +30,11 @@ Constraints:
 
 
 class Solution:
-    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+    def findContentChildren(self, g, s) -> int:
+        # 从小到大排列
         g.sort()
         s.sort()
+        print(g, s)
         i, j = 0, 0
         while i < len(g) and j < len(s):
             if s[j] >= g[i]:
@@ -40,3 +42,21 @@ class Solution:
             j += 1
         return i
 
+    # 大饼干
+    def findContentChildren2(self, g, s) -> int:
+        g.sort()  # stomach
+        s.sort()  # cookie
+        i = len(s) - 1
+
+        result = 0
+        for j in range(len(g) - 1, -1, -1):
+            if i >= 0 and s[i] >= g[j]:
+                result += 1
+                i -= 1
+        return result
+
+
+g = [1, 2]
+s = [1, 2, 3]
+func = Solution()
+print(func.findContentChildren2(g, s))
